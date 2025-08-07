@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Inheritance</h2>
+    <p id="details"></p>
+
+    <script>
+        class Car{
+            constructor(brand)
+            {
+                this.brand = brand;
+            }
+            dispaly()
+            {
+                return "The car brand is " + this.brand;
+            }
+        }
+        
+        class Model extends Car{
+            constructor(brand, model)
+            {
+                super(brand);
+                this.model = model;
+            }
+            show()
+            {
+                return this.dispaly() + " and the model is " + this.model;
+            }
+        }
+        document.getElementById("details").innerHTML = new Model("Toyota", "Corolla").show();
+    </script>
+</body>
+</html>
