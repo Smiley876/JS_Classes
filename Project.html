@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Class Documentation</title>
+    </head>
+
+    <body>
+        <h2>Javascript Class Inheritance</h2>
+        <p id="detail"></p>
+        <p id="movie"></p>
+
+        <script>
+            class Movie  //parent class
+            {
+                constructor(title)
+                {
+                    this.title = title;
+                }
+              
+                 //1. static method
+                static getMovie() 
+                {
+                   return prompt("Enter movie name:");
+                }
+
+                //2. instance method
+                movie()
+                {
+                    return `
+                    <strong>Movie name is: </strong> ${this.title}`;
+                    
+                }
+            }    
+                
+
+            //inhetit class Movie with 2 parameters
+            class MovieDetails extends Movie //child class
+            {
+                constructor(title, year)
+                {
+                    super(title); //call parent class constructor
+                    this.year = year;
+                }
+
+                static getYear(){
+                    return prompt("Enter movie year:");
+                }
+
+                movieDetails()
+                {
+                    
+                      return ` ${this.title} was made in the year ${this.year}`;
+                
+               }
+            }
+
+            // 1. Call static methods inside the class to get inputs
+            const title = Movie.getMovie();
+            const year = MovieDetails.getYear();
+
+              // 2. Create child class object using inputs
+            const movieObj = new MovieDetails(title, year);
+
+          // 3. Display outputs
+          document.getElementById("detail").innerHTML = movieObj.movie()
+          document.getElementById("movie").innerHTML = movieObj.movieDetails();
+
+        </script>
+    </body>
+</html>
